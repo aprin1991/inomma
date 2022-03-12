@@ -12,31 +12,30 @@ export function Header() {
     dispatch(clearCurrentUser());
     navigate("/");
     localStorage.removeItem("user");
-    // console.log(object);
   };
   return (
-    <header className="flex justify-between items-center py-4">
-      <h1 className="text-xl font-bold">Inomma</h1>
+    <header className="flex justify-between items-center p-6">
+      <h1 className="text-xl font-bold">
+        <Link to="/">Inomma</Link>
+      </h1>
       <ul className="flex justify-start items-center text-sm font-bold">
+        <li className="mr-4">
+          <Link to="/">Home</Link>{" "}
+        </li>
+        <li className="mr-4">
+          <Link to="/admin/add/product">Add Product</Link>{" "}
+        </li>
         {currentUser ? (
-          <li className="mr-3">
+          <li>
             <span className="cursor-pointer" onClick={logout}>
               Log Out
             </span>
           </li>
         ) : (
-          <li className="mr-3">
+          <li>
             <Link to="/login">Login</Link>
           </li>
         )}
-        {currentUser && (
-          <li className="mr-3">
-            <Link to="/admin/add/product">Add Product</Link>{" "}
-          </li>
-        )}
-        <li>
-          <Link to="/">Home</Link>{" "}
-        </li>
       </ul>
     </header>
   );

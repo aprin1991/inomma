@@ -14,7 +14,7 @@ export const Container = ({ children }) => {
     dispatch(setProducts(products));
   }, []);
   return (
-    <div className="min-h-screen flex flex-col max-w-2xl w-full mx-auto">
+    <div className="min-h-screen flex flex-col max-w-2xl w-full mx-auto shadow-md">
       {children}
     </div>
   );

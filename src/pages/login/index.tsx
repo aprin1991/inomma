@@ -1,12 +1,14 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { setCurrentUser } from "redux/user/user.actions";
 
 function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+
   const {
     formState: { errors },
     handleSubmit,
@@ -22,7 +24,11 @@ function Login() {
       );
       dispatch(setCurrentUser({ userName: data.userName, isLoggedIn: true }));
       reset();
-      navigate("/");
+      if (searchParams.get("url")) {
+        navigate(searchParams.get("url"));
+      } else {
+        navigate("/");
+      }
     } else {
       alert("UserName or Password has wrong");
     }

@@ -1,21 +1,24 @@
 import "styles/global.scss";
-import { Provider, useDispatch } from "react-redux";
+import { Provider, useDispatch, useSelector } from "react-redux";
 import store from "redux/store";
 import React, { lazy, Suspense } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useSearchParams } from "react-router-dom";
 
 import { Container } from "components";
 import { Header } from "components";
 import PrivateRoute from "components/private-route";
+import { RootState } from "redux/reducers";
 const Home = lazy(() => import("./pages/home"));
 const Login = lazy(() => import("./pages/login"));
 const AddProduct = lazy(() => import("./pages/admin/product/add"));
 function App(): JSX.Element {
+  const { currentUser } = useSelector((state: RootState) => state.user);
+  const [searchParams] = useSearchParams();
   return (
-    <Provider store={store}>
-      <div className="App">
-        <Container>
-          <Header />
+    <div className="App">
+      <Container>
+        <Header />
+        <main className="p-4">
           <Routes>
             <Route
               path="/"
@@ -29,7 +32,11 @@ function App(): JSX.Element {
               path="/login"
               element={
                 <Suspense fallback={<>...</>}>
-                  <Login />
+                  {currentUser ? (
+                    <Navigate to={searchParams.get("url") ?? "/"} />
+                  ) : (
+                    <Login />
+                  )}
                 </Suspense>
               }
             />
@@ -44,9 +51,9 @@ function App(): JSX.Element {
               }
             />
           </Routes>
-        </Container>
-      </div>
-    </Provider>
+        </main>
+      </Container>
+    </div>
   );
 }
 

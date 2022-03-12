@@ -1,14 +1,17 @@
-import React from "react";
 import { useSelector } from "react-redux";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import { RootState } from "redux/reducers";
 
 function PrivateRoute({ children }) {
-  const navigate = useNavigate();
-  const { currentUser } = useSelector((state: RootState) => state.user);
-  console.log("add current::", currentUser);
+  const { pathname } = useLocation();
 
-  return currentUser ? <div>{children}</div> : <Navigate to="/login" />;
+  const { currentUser } = useSelector((state: RootState) => state.user);
+
+  return currentUser ? (
+    <div>{children}</div>
+  ) : (
+    <Navigate to={`/login?url=${pathname}`} />
+  );
 }
 
 export default PrivateRoute;

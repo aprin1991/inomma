@@ -16,7 +16,9 @@ function AddProduct() {
       "products",
       JSON.stringify([...productFormLocalStorage, data])
     );
-    dispatch(addToProducts(data));
+    if (productFormLocalStorage) {
+      dispatch(addToProducts(data));
+    }
     reset();
   };
   return (
@@ -40,7 +42,7 @@ function AddProduct() {
         <div className="w-full grid grid-cols-2 gap-2 mb-3">
           <div>
             <input
-              type="text"
+              type="number"
               {...register("price", {
                 required: "Please Enter The Price",
                 pattern: {

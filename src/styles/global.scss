@@ -1,8 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+$primaryColor: #282c35;
 body {
-    color: #282c35;
+    color: $primaryColor;
     background-color: #fff;
     font-size: 16px;
+}
+
+header {
+    background-color: $primaryColor;
+    color: #fff;
 }
