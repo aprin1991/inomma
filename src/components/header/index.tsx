@@ -12,7 +12,6 @@ export function Header() {
     dispatch(clearCurrentUser());
     navigate("/");
     localStorage.removeItem("user");
-    // console.log(object);
   };
   return (
     <header className="flex justify-between items-center py-4">
