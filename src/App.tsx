@@ -9,6 +9,7 @@ import { Header } from "components";
 import PrivateRoute from "components/private-route";
 import { RootState } from "redux/reducers";
 import Custom404 from "pages/404";
+import Loading from "components/loading";
 const Home = lazy(() => import("./pages/home"));
 const Login = lazy(() => import("./pages/login"));
 const AddProduct = lazy(() => import("./pages/admin/product/add"));
@@ -24,7 +25,7 @@ function App(): JSX.Element {
             <Route
               path="/"
               element={
-                <Suspense fallback={<>...</>}>
+                <Suspense fallback={<Loading />}>
                   <Home />
                 </Suspense>
               }
@@ -32,7 +33,7 @@ function App(): JSX.Element {
             <Route
               path="/login"
               element={
-                <Suspense fallback={<>...</>}>
+                <Suspense fallback={<Loading />}>
                   {currentUser ? (
                     <Navigate to={searchParams.get("url") ?? "/"} />
                   ) : (
@@ -44,7 +45,7 @@ function App(): JSX.Element {
             <Route
               path="/admin/add/product"
               element={
-                <Suspense fallback={<>...</>}>
+                <Suspense fallback={<Loading />}>
                   <PrivateRoute>
                     <AddProduct />
                   </PrivateRoute>
@@ -54,7 +55,7 @@ function App(): JSX.Element {
             <Route
               path="*"
               element={
-                <Suspense fallback={<>...</>}>
+                <Suspense fallback={<Loading />}>
                   <Custom404 />
                 </Suspense>
               }
