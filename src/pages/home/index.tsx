@@ -29,9 +29,13 @@ const Home: React.FC = () => {
   return (
     <div>
       <div className="flex flex-col gap-4">
-        {filteredItems?.map((el) => (
-          <Card key={el.id} data={el} />
-        ))}
+        {filteredItems?.length > 0 ? (
+          filteredItems?.map((el) => <Card key={el.id} data={el} />)
+        ) : (
+          <div className="uppercase text-base text-slate-800 font-semibold h-96 flex justify-center items-center">
+            No Data{" "}
+          </div>
+        )}
       </div>
     </div>
   );
