@@ -1,6 +1,6 @@
 import "styles/global.scss";
 import { Provider, useDispatch, useSelector } from "react-redux";
-import store from "redux/store";
+
 import React, { lazy, Suspense } from "react";
 import { Navigate, Route, Routes, useSearchParams } from "react-router-dom";
 
@@ -8,6 +8,7 @@ import { Container } from "components";
 import { Header } from "components";
 import PrivateRoute from "components/private-route";
 import { RootState } from "redux/reducers";
+import Custom404 from "pages/404";
 const Home = lazy(() => import("./pages/home"));
 const Login = lazy(() => import("./pages/login"));
 const AddProduct = lazy(() => import("./pages/admin/product/add"));
@@ -47,6 +48,14 @@ function App(): JSX.Element {
                   <PrivateRoute>
                     <AddProduct />
                   </PrivateRoute>
+                </Suspense>
+              }
+            />
+            <Route
+              path="*"
+              element={
+                <Suspense fallback={<>...</>}>
+                  <Custom404 />
                 </Suspense>
               }
             />

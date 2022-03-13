@@ -1,12 +1,13 @@
-import { applyMiddleware, configureStore, createStore } from "@reduxjs/toolkit";
-import { useDispatch } from "react-redux";
-import logger from "redux-logger";
+import { createStore, applyMiddleware } from "redux";
 import rootReducer from "./reducers";
+import logger from "redux-logger";
+import { persistStore } from "redux-persist";
 const middlewares = [];
-middlewares.push(logger);
-// const store = configureStore({ reducer: rootReducer });
-const store = createStore(rootReducer, applyMiddleware(...middlewares));
-export type AppDispatch = typeof store.dispatch;
-export const useAppDispatch = () => useDispatch<AppDispatch>();
+if (process.env.NODE_ENV === "development") {
+  middlewares.push(logger);
+}
 
-export default store;
+const store = createStore(rootReducer, applyMiddleware(...middlewares));
+
+const persistor = persistStore(store);
+export { store, persistor };

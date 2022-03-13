@@ -14,11 +14,11 @@ export function Header() {
     localStorage.removeItem("user");
   };
   return (
-    <header className="flex justify-between items-center p-6">
-      <h1 className="text-xl font-bold">
+    <header className="flex justify-between items-center p-3 lg:p-6">
+      <h1 className="text-lg lg:text-xl font-bold uppercase">
         <Link to="/">Inomma</Link>
       </h1>
-      <ul className="flex justify-start items-center text-sm font-bold">
+      <ul className="flex justify-start items-center text-sm font-medium lg:font-bold">
         <li className="mr-4">
           <Link to="/">Home</Link>{" "}
         </li>

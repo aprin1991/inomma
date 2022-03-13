@@ -35,10 +35,19 @@ function Login() {
   };
 
   return (
-    <div className="w-2/3 mx-auto mt-32">
-      <h4 className="font-bold text-lg mb-4 text-center">
+    <div className="w-full lg:w-2/3 mx-auto mt-32">
+      <h4 className="font-bold text-lg mb-6 text-center">
         Sign in with your email and password
       </h4>
+      <div className="flex text-sm mb-4">
+        <span className="italic flex justify-start items-center">
+          <span>*</span>username : admin
+        </span>
+        <span className="mx-2">-----</span>
+        <span className="italic flex justify-start items-center">
+          <span>*</span>password : admin
+        </span>
+      </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
           <input
@@ -74,15 +83,6 @@ function Login() {
           <button className="bg-indigo-500 text-white rounded-full p-2 px-6 hover:bg-indigo-400 focus:outline-none flex items-center justify-end ">
             <span>SIGN IN </span>
           </button>
-        </div>
-        <div className="flex text-sm">
-          <span className="italic flex justify-start items-center">
-            <span>*</span>username : admin
-          </span>
-          <span className="mx-2">-----</span>
-          <span className="italic flex justify-start items-center">
-            <span>*</span>password : admin
-          </span>
         </div>
       </form>
     </div>

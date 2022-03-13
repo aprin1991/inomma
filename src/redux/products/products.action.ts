@@ -12,3 +12,10 @@ export const setProducts = (products) => {
     payload: products,
   };
 };
+export const removeItem = (id) => {
+  console.log("redux products", id);
+  return {
+    type: productsActionTypes.REMOVE_ITEM,
+    payload: id,
+  };
+};
