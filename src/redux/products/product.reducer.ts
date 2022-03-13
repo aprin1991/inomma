@@ -1,4 +1,3 @@
-import { stat } from "fs";
 import { removeProduct } from "utilities/helpers";
 import productsActionTypes from "./products.types";
 const INITIAL_STATE = {

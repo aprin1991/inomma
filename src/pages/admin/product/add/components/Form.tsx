@@ -1,10 +1,8 @@
-import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { addToProducts } from "redux/actions";
 import { useDispatch } from "react-redux";
 function Form() {
   const dispatch = useDispatch();
-  const [editMode, setEditMode] = useState(false);
   const {
     formState: { errors },
     handleSubmit,

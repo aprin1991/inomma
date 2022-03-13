@@ -1,5 +1,5 @@
 import "styles/global.scss";
-import { Provider, useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 import React, { lazy, Suspense } from "react";
 import { Navigate, Route, Routes, useSearchParams } from "react-router-dom";
