@@ -12,7 +12,7 @@ const Home: React.FC = () => {
       let mm = String(today.getMonth() + 1).padStart(2, "0");
       let yyyy = today.getFullYear();
       let todayDate = mm + "/" + dd + "/" + yyyy;
-      return +new Date(el?.startDate) >= +new Date(todayDate);
+      return +new Date(el?.endDate) >= +new Date(todayDate);
     });
     setFilteredItems(randomizer(activeProducts));
   }, [products]);
