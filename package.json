@@ -20,6 +20,7 @@
         "redux-persist": "^6.0.0",
         "sass": "^1.32.5",
         "typescript": "^4.2.4",
+        "axios": "^0.21.1",
         "web-vitals": "^1.1.1"
     },
     "scripts": {
